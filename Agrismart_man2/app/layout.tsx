@@ -72,7 +72,12 @@ export const metadata: Metadata = {
     images: ["/sawahA.jpg"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    apple: "/icon.png",
   },
 };
 

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="50%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a3e635" />
+      <stop offset="100%" stop-color="#84cc16" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background Squircle -->
+  <rect x="4" y="4" width="120" height="120" rx="32" fill="url(#bgGrad)" filter="url(#shadow)" />
+  <rect x="5" y="5" width="118" height="118" rx="31" fill="none" stroke="#34d399" stroke-width="2.5" stroke-opacity="0.5" />
+
+  <!-- Leaf Accent -->
+  <path d="M 46 25 C 46 25 54 15 63 17 C 70 19 68 28 61 31 C 54 34 49 29 46 25 Z" fill="url(#leafGrad)" />
+  <path d="M 48 26 C 51 23 57 20 60 22" stroke="#065f46" stroke-width="1.5" stroke-linecap="round" fill="none" />
+
+  <!-- Text "Agr" -->
+  <text x="64" y="87" 
+        font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" 
+        font-size="52" 
+        font-weight="900" 
+        letter-spacing="-1.5"
+        fill="#ffffff" 
+        text-anchor="middle">
+    Agr
+  </text>
+
+  <!-- IoT Smart Sensor Signal Dot -->
+  <circle cx="100" cy="80" r="5" fill="#a3e635" />
+  <circle cx="100" cy="80" r="9" fill="none" stroke="#a3e635" stroke-width="1.5" opacity="0.7" />
+</svg>
