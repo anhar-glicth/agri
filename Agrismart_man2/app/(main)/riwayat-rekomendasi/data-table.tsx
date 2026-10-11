@@ -110,21 +110,21 @@ export function RiwayatRek() {
   return (
     <div className="px-2 pt-4 sm:px-6 sm:pt-6">
       <Card className="@container/card">
-        <CardHeader className="flex justify-between">
+        <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <Input
             placeholder="Cari rekomendasi..."
             value={search}
             onChange={handleChange}
-            className="w-[30%]"
+            className="w-full sm:w-72"
           />
           <DropdownMenu>
-            <DropdownMenuTrigger className="w-40 px-2" asChild>
-              <Button variant="outline">
-                {jenisPupuk || "Semua Jenis pupuk"}
-                <ChevronDown />
+            <DropdownMenuTrigger className="w-full sm:w-52 px-2" asChild>
+              <Button variant="outline" className="w-full sm:w-52 justify-between">
+                <span className="truncate">{jenisPupuk || "Semua Jenis pupuk"}</span>
+                <ChevronDown className="h-4 w-4 shrink-0" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" className="w-52">
               <DropdownMenuItem onClick={() => setJenisPupuk("")}>
                 Semua Jenis pupuk
               </DropdownMenuItem>
@@ -150,33 +150,43 @@ export function RiwayatRek() {
           </DropdownMenu>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Tanggal</TableHead>
-                <TableHead>Rekomendasi</TableHead>
-                <TableHead>Dosis</TableHead>
-                <TableHead>Aksi</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {currentData?.map((data: any, index: number) => (
-                <TableRow key={index}>
-                  <TableCell>{data.tanggal}</TableCell>
-                  <TableCell>{data.jenisPupuk}</TableCell>
-                  <TableCell>{data.dosis} kg/ha</TableCell>
-                  <TableCell>
-                    <button
-                      onClick={() => setSelectedData(data)}
-                      className="cursor-pointer"
-                    >
-                      <Eye size={18} />
-                    </button>
-                  </TableCell>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="whitespace-nowrap">Tanggal</TableHead>
+                  <TableHead className="whitespace-nowrap">Rekomendasi</TableHead>
+                  <TableHead className="whitespace-nowrap">Dosis</TableHead>
+                  <TableHead className="text-center w-16">Aksi</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {currentData?.map((data: any, index: number) => (
+                  <TableRow key={index}>
+                    <TableCell className="whitespace-nowrap font-medium text-slate-800 dark:text-slate-200">
+                      {formatTanggal(data.tanggal)}
+                    </TableCell>
+                    <TableCell className="whitespace-nowrap font-semibold text-emerald-700 dark:text-emerald-400">
+                      {data.jenisPupuk}
+                    </TableCell>
+                    <TableCell className="whitespace-nowrap font-medium">
+                      {formatDosis(data.dosis)}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <button
+                        onClick={() => setSelectedData(data)}
+                        className="cursor-pointer p-1.5 rounded-lg text-slate-500 hover:text-emerald-600 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors inline-flex items-center justify-center"
+                        title="Lihat Detail"
+                        aria-label="Lihat Detail"
+                      >
+                        <Eye size={18} />
+                      </button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
           <div className="flex justify-center items-center p-3">
             {dataFilters.length === 0 && <p>Data Kosong</p>}
           </div>

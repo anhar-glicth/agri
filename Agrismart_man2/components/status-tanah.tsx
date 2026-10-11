@@ -99,27 +99,29 @@ export function StatusTanah() {
   }, [isMobile]);
 
   return (
-    <Card className="@container/card bg-green-50 dark:text-slate-900 flex flex-col h-full">
+    <Card className="@container/card bg-green-50 dark:bg-slate-900 dark:text-white flex flex-col h-full w-full">
       <CardHeader>
         <CardTitle>Status Parameter</CardTitle>
       </CardHeader>
       <CardContent className="flex-1 overflow-hidden">
-        <div className="w-[80%]">
-          <div className="flex items-center gap-3 my-2">
-            <BadgeCheck className="text-green-700" />
-            <h1 className="">Lakukan pemupukan sesuai rekomendasi sistem</h1>
+        <div className="w-full space-y-3">
+          <div className="flex items-start gap-3">
+            <BadgeCheck className="text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+            <p className="text-sm text-slate-700 dark:text-slate-300">
+              Lakukan pemupukan sesuai rekomendasi sistem
+            </p>
           </div>
-          <div className="flex items-center gap-3 my-2">
-            <BadgeCheck className="text-green-700" />
-            <h1 className="">
+          <div className="flex items-start gap-3">
+            <BadgeCheck className="text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+            <p className="text-sm text-slate-700 dark:text-slate-300">
               Jaga kelembaban tanah dengan irigasi yang cukup
-            </h1>
+            </p>
           </div>
-          <div className="flex items-center gap-3 my-2">
-            <BadgeCheck className="text-green-700" />
-            <h1 className="">
+          <div className="flex items-start gap-3">
+            <BadgeCheck className="text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+            <p className="text-sm text-slate-700 dark:text-slate-300">
               Lakukan monitoring secara rutin untuk hasil optimal
-            </h1>
+            </p>
           </div>
         </div>
       </CardContent>
