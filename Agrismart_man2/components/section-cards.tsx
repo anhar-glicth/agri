@@ -136,23 +136,14 @@ export function SectionCards() {
   return (
     <div className="px-4 sm:px-6 py-2">
       {/* HEADER */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
-        <div>
-          <h2 className="text-base font-bold text-slate-900 dark:text-white tracking-tight">
-            7 Parameter Tanah Terukur
-          </h2>
+      <div className="mb-3">
+        <h2 className="text-base font-bold text-slate-900 dark:text-white tracking-tight">
+          7 Parameter Tanah Terukur
+        </h2>
 
-          <p className="text-xs text-slate-500 dark:text-slate-400">
-            Termasuk EC, NPK, pH, kelembaban, dan suhu tanah
-          </p>
-        </div>
-
-        <div className="flex items-center gap-2 self-start sm:self-auto">
-          <span className="text-[11px] font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 px-2.5 py-1 rounded-full border border-emerald-200 dark:border-emerald-800/60 flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            7 Sensor Aktif Tersinkron
-          </span>
-        </div>
+        <p className="text-xs text-slate-500 dark:text-slate-400">
+          Termasuk EC, NPK, pH, kelembaban, dan suhu tanah
+        </p>
       </div>
 
       {/* SENSOR CARDS */}
