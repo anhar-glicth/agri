@@ -1,0 +1,4 @@
+id,pH_Tanah,kelembaban,ec,nitrogen,fosfor,kalium,suhuTanah,jenisTanaman,tanggal,sensor_id
+404,6.5,45,1.8,90,40,20,28,Jagung,2026-07-05 00:00:00,ESP32-001
+454,5.4,74.5,181,0,44,36,26.7,Jagung,2026-07-04 00:00:00,ESP32-001
+479,6.2,45.5,1.8,90,40,20,27.5,Padi,2026-08-25 00:00:00,ESP32-003

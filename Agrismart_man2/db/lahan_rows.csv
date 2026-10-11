@@ -1,0 +1,3 @@
+id,nama,luas,tanaman,sensor,lokasi,tanggal,gambar
+6,Lahan 3,1.5,Padi,ESP32-003,selong,2026-08-25,https://iffjgsyfviyrbtgfsojy.supabase.co/storage/v1/object/public/Image/92ef59ba-775e-4fa6-8d06-27c0e2569bac.png
+8,Lahan 1,1,Jagung,ESP32-001,pancor,2026-08-25,https://iffjgsyfviyrbtgfsojy.supabase.co/storage/v1/object/public/Image/2b939e92-28a1-49c5-9c12-53e865decb5b.png
