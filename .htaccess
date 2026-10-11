@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Arahkan root / langsung ke Agrismart_man2/out/
+  RewriteRule ^$ Agrismart_man2/out/index.html [L]
+
+  # Jika request sudah mengarah ke Agrismart_man2/out, lewati
+  RewriteCond %{REQUEST_URI} ^/Agrismart_man2/out/ [NC]
+  RewriteRule ^ - [L]
+
+  # Jika file ada di dalam Agrismart_man2/out, layani file tersebut
+  RewriteCond %{DOCUMENT_ROOT}/Agrismart_man2/out/$1 -f [OR]
+  RewriteCond %{DOCUMENT_ROOT}/Agrismart_man2/out/$1 -d
+  RewriteRule ^(.*)$ Agrismart_man2/out/$1 [L]
+
+  # Fallback untuk route Next.js (seperti /dashboard/, /lahan/, dll)
+  RewriteCond %{DOCUMENT_ROOT}/Agrismart_man2/out/$1/index.html -f
+  RewriteRule ^(.*)$ Agrismart_man2/out/$1/index.html [L]
+</IfModule>

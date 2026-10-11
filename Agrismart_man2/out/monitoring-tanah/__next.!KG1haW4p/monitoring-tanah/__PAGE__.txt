@@ -1,0 +1,8 @@
+1:"$Sreact.fragment"
+2:I[29896,["108","static/chunks/5ae85aa7-a43795e7057b6d8a.js","409","static/chunks/409-3def6c52b776196c.js","549","static/chunks/549-9fc99c52ac6d4683.js","649","static/chunks/app/(main)/monitoring-tanah/page-298f2e249152df27.js"],"SectionCards"]
+3:I[82767,["108","static/chunks/5ae85aa7-a43795e7057b6d8a.js","409","static/chunks/409-3def6c52b776196c.js","549","static/chunks/549-9fc99c52ac6d4683.js","649","static/chunks/app/(main)/monitoring-tanah/page-298f2e249152df27.js"],"ChartAreaInteractive"]
+4:I[22202,["108","static/chunks/5ae85aa7-a43795e7057b6d8a.js","409","static/chunks/409-3def6c52b776196c.js","549","static/chunks/549-9fc99c52ac6d4683.js","649","static/chunks/app/(main)/monitoring-tanah/page-298f2e249152df27.js"],"StatusTanah"]
+5:I[90484,[],"OutletBoundary"]
+6:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"flex flex-1 flex-col","children":["$","div",null,{"className":"@container/main flex flex-1 flex-col gap-2","children":["$","div",null,{"className":"flex flex-col gap-4 py-4 md:gap-6 md:py-6","children":[["$","$L2",null,{}],["$","div",null,{"className":"flex gap-6 items-start px-4 lg:px-6","children":[["$","div",null,{"className":"w-150","children":["$","$L3",null,{}]}],["$","div",null,{"className":"w-100 shrink-0","children":["$","$L4",null,{}]}]]}]]}]}]}],null,["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"2wJTz0pGkn0mxMg-dxQWL"}
+7:null
