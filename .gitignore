@@ -3,6 +3,7 @@
 *.zip
 *.7z
 *.tar.gz
+*.exe
 
 # Node & Next.js
 **/node_modules/
