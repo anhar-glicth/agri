@@ -9,9 +9,10 @@ import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 
-import { ArrowRight, Flower2 } from "lucide-react";
+import { ArrowRight, Flower2, X } from "lucide-react";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -23,6 +24,13 @@ import { navMain } from "@/lib/nav";
 export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
   const { lahanAktif } = useActiveLahan();
+  const { isMobile, setOpenMobile } = useSidebar();
+
+  const handleNavClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
 
   return (
     <Sidebar
@@ -66,6 +74,18 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
                 alt="Logo MAN 2 Mataram"
                 className="h-9 w-9 shrink-0 rounded-full ring-1 ring-slate-200 dark:ring-slate-700"
               />
+
+              {/* Tombol Tutup Khusus Mobile Handphone */}
+              {isMobile && (
+                <button
+                  type="button"
+                  onClick={() => setOpenMobile(false)}
+                  className="p-1.5 ml-1 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors"
+                  aria-label="Tutup Menu"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              )}
             </div>
 
             {/* Keterangan instansi, seperti kop surat */}
@@ -106,7 +126,12 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
             const isActive = pathname === item.url;
 
             return (
-              <Link key={item.title} href={item.url} className="block">
+              <Link
+                key={item.title}
+                href={item.url}
+                className="block"
+                onClick={handleNavClick}
+              >
                 <button
                   type="button"
                   className={clsx(
@@ -315,6 +340,7 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
 
           <Link
             href={lahanAktif ? `/lahan/edit/${lahanAktif.id}` : "/lahan"}
+            onClick={handleNavClick}
             className="
         rounded-xl
         bg-emerald-800

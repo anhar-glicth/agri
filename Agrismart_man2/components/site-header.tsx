@@ -2,7 +2,9 @@
 
 import {
   Bell,
+  Menu,
   Moon,
+  PanelLeftIcon,
   Sun,
 } from "lucide-react"
 import { usePathname } from "next/navigation"
@@ -35,9 +37,14 @@ export function SiteHeader({
 
         <div className="flex items-center gap-3 min-w-0">
 
+          {/* HAMBURGER MENU (HANDPHONE) & PANEL TOGGLE (DESKTOP) */}
           <SidebarTrigger
-            className="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl"
-          />
+            className="p-2 h-9 w-9 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors cursor-pointer"
+            aria-label="Menu Navigasi"
+          >
+            <Menu className="w-5 h-5 md:hidden" />
+            <PanelLeftIcon className="w-5 h-5 hidden md:block" />
+          </SidebarTrigger>
 
           {/* JUDUL HALAMAN AKTIF */}
           <div className="min-w-0">
