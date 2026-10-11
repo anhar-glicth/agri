@@ -1,5 +1,9 @@
-xgboost==3.3.0
-scikit-learn==1.8.0
+fastapi
+uvicorn
+pydantic
+python-multipart
+scikit-learn
+xgboost
 joblib
 pandas
 supabase
