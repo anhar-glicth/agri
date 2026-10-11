@@ -1,8 +1,8 @@
-import BASE_URL from "./api";
+import { getBaseUrl } from "./api";
 
 export async function sendPredict(sensorId: string) {
   const response = await fetch(
-    `${BASE_URL}/predict/${encodeURIComponent(sensorId)}`,
+    `${getBaseUrl()}/predict/${encodeURIComponent(sensorId)}`,
     {
       method: "POST",
     },

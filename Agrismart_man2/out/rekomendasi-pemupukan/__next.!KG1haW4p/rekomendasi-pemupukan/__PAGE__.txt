@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[24547,["108","static/chunks/5ae85aa7-47e4c1b4251861ec.js","409","static/chunks/409-3def6c52b776196c.js","207","static/chunks/app/(main)/rekomendasi-pemupukan/page-95cbdb0c22a10426.js"],"default"]
+2:I[24547,["108","static/chunks/5ae85aa7-47e4c1b4251861ec.js","409","static/chunks/409-3def6c52b776196c.js","207","static/chunks/app/(main)/rekomendasi-pemupukan/page-c4c5c41191c9f3e9.js"],"default"]
 3:I[90484,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"-q8ozxxcD9gXI3HhlbgY-"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"HfiGk6AgyPHQ2S_hHVRKi"}
 5:null

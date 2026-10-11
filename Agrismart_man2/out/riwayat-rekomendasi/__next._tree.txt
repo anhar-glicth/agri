@@ -1,3 +1,3 @@
 :HL["/_next/static/css/15730e9f7c5c55ef.css","style"]
-:HL["/_next/static/css/5da55778341b4396.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"(main)","param":null,"prefetchHints":0,"slots":{"children":{"name":"riwayat-rekomendasi","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"-q8ozxxcD9gXI3HhlbgY-"}
+:HL["/_next/static/css/bf5ed8c4c3126160.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"(main)","param":null,"prefetchHints":0,"slots":{"children":{"name":"riwayat-rekomendasi","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"HfiGk6AgyPHQ2S_hHVRKi"}

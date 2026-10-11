@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { getNavItemByPath } from "@/lib/nav"
-import BASE_URL from "@/services/api"
+import { getBaseUrl, setCustomApiUrl, DEFAULT_API_URL } from "@/services/api"
 
 interface HeaderProps {
   unreadNotifCount?: number
@@ -34,40 +34,52 @@ export function SiteHeader({
     setTheme(isDarkMode ? "light" : "dark")
   }
 
+  const checkServer = async () => {
+    try {
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 4000)
+      const res = await fetch(`${getBaseUrl()}/`, {
+        method: "GET",
+        signal: controller.signal,
+        cache: "no-store",
+      })
+      clearTimeout(timeoutId)
+
+      if (res.ok) {
+        setServerStatus("online")
+      } else {
+        setServerStatus("offline")
+      }
+    } catch {
+      setServerStatus("offline")
+    }
+  }
+
   // Cek status koneksi ke server AI / ML FastAPI
   useEffect(() => {
-    let isMounted = true
-
-    async function checkServer() {
-      try {
-        const controller = new AbortController()
-        const timeoutId = setTimeout(() => controller.abort(), 4000)
-        const res = await fetch(`${BASE_URL}/`, {
-          method: "GET",
-          signal: controller.signal,
-          cache: "no-store",
-        })
-        clearTimeout(timeoutId)
-
-        if (res.ok && isMounted) {
-          setServerStatus("online")
-        } else if (isMounted) {
-          setServerStatus("offline")
-        }
-      } catch {
-        if (isMounted) {
-          setServerStatus("offline")
-        }
-      }
-    }
-
     checkServer()
-    const interval = setInterval(checkServer, 60000)
+    const interval = setInterval(checkServer, 30000)
     return () => {
-      isMounted = false
       clearInterval(interval)
     }
   }, [])
+
+  const handleConfigureApi = () => {
+    const current = getBaseUrl()
+    const input = window.prompt(
+      `Pengaturan Koneksi Server AI:\n\nURL saat ini:\n${current}\n\nMasukkan URL Tunnel Cloudflare baru jika berubah (atau biarkan kosong untuk reset ke default):`,
+      current
+    )
+    if (input !== null) {
+      if (input.trim() === "" || input.trim() === DEFAULT_API_URL) {
+        setCustomApiUrl(null)
+      } else {
+        setCustomApiUrl(input.trim())
+      }
+      setServerStatus("checking")
+      setTimeout(checkServer, 300)
+    }
+  }
 
   return (
     <header className="sticky top-0 z-30 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-colors">
@@ -100,21 +112,23 @@ export function SiteHeader({
 
         <div className="flex items-center gap-2 sm:gap-3">
 
-          {/* INDIKATOR STATUS SERVER AI / ML */}
-          <div
-            className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold border transition-all cursor-help ${
+          {/* INDIKATOR STATUS SERVER AI / ML DENGAN TOMBOL PENGATURAN */}
+          <button
+            type="button"
+            onClick={handleConfigureApi}
+            className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold border transition-all cursor-pointer ${
               serverStatus === "online"
-                ? "bg-emerald-50 dark:bg-emerald-950/50 border-emerald-300 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300"
+                ? "bg-emerald-50 dark:bg-emerald-950/50 border-emerald-300 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100"
                 : serverStatus === "offline"
-                ? "bg-rose-50 dark:bg-rose-950/50 border-rose-300 dark:border-rose-800 text-rose-700 dark:text-rose-300"
-                : "bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-500"
+                ? "bg-rose-50 dark:bg-rose-950/50 border-rose-300 dark:border-rose-800 text-rose-700 dark:text-rose-300 hover:bg-rose-100"
+                : "bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-500 hover:bg-slate-200"
             }`}
             title={
               serverStatus === "online"
-                ? "Server AI Online: Siap melakukan analisis & prediksi pemupukan"
+                ? "Server AI Online: Siap analisis & prediksi. Klik untuk ubah URL server jika diperlukan."
                 : serverStatus === "offline"
-                ? "Server AI Offline: Komputer backend belum aktif atau tunnel terputus"
-                : "Memeriksa status koneksi server AI..."
+                ? "Server AI Offline: Komputer backend belum aktif atau tunnel berganti. Klik untuk ubah URL tunnel."
+                : "Memeriksa status koneksi server AI... Klik untuk ubah URL."
             }
           >
             <span
@@ -130,10 +144,10 @@ export function SiteHeader({
               {serverStatus === "online"
                 ? "AI Online"
                 : serverStatus === "offline"
-                ? "AI Offline"
+                ? "AI Offline (Klik)"
                 : "AI..."}
             </span>
-          </div>
+          </button>
 
           {/* BRANDING SEKOLAH, tampil ringkas di layar kecil saat sidebar tersembunyi */}
           <div className="flex items-center gap-1.5 rounded-xl bg-slate-100 px-2 py-1 dark:bg-slate-800 lg:hidden">

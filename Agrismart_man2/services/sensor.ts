@@ -1,8 +1,8 @@
-import BASE_URL from "./api";
+import { getBaseUrl } from "./api";
 
 export async function getLatestSensor(sensorId: string) {
   const response = await fetch(
-    `${BASE_URL}/sensor/latest/${encodeURIComponent(sensorId)}`,
+    `${getBaseUrl()}/sensor/latest/${encodeURIComponent(sensorId)}`,
   );
 
   if (!response.ok) {
@@ -14,7 +14,7 @@ export async function getLatestSensor(sensorId: string) {
 
 export async function getGrafikSensor(sensorId: string) {
   const response = await fetch(
-    `${BASE_URL}/sensor/grafik/${encodeURIComponent(sensorId)}`,
+    `${getBaseUrl()}/sensor/grafik/${encodeURIComponent(sensorId)}`,
   );
 
   if (!response.ok) {

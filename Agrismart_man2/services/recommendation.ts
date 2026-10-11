@@ -1,7 +1,7 @@
-import BASE_URL from "./api";
+import { getBaseUrl } from "./api";
 
 export async function saveRecommendation(data: any) {
-  const response = await fetch(`${BASE_URL}/recommendation/save`, {
+  const response = await fetch(`${getBaseUrl()}/recommendation/save`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,7 +18,7 @@ export async function saveRecommendation(data: any) {
 }
 
 export async function lastRecommendation() {
-  const response = await fetch(`${BASE_URL}/recommendation/last`);
+  const response = await fetch(`${getBaseUrl()}/recommendation/last`);
 
   if (!response.ok) {
     const errorText = await response.text();

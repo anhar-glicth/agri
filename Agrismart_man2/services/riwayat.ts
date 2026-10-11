@@ -1,7 +1,7 @@
-import BASE_URL from "./api";
+import { getBaseUrl } from "./api";
 
 export async function getLatestRek() {
-    const response = await fetch(`${BASE_URL}/sensor`);
+    const response = await fetch(`${getBaseUrl()}/sensor`);
     if (!response.ok) {
         throw new Error("Gagal mengambil data sensor");
     }

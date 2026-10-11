@@ -1,4 +1,4 @@
-import BASE_URL from "./api";
+import { getBaseUrl } from "./api";
 
 type TambahLahanRequest = {
   nama: string;
@@ -23,7 +23,7 @@ export async function tambahLahan(data: TambahLahanRequest) {
       formData.append("gambar", data.gambar);
     }
 
-    const response = await fetch(`${BASE_URL}/lahan/tambah/save`, {
+    const response = await fetch(`${getBaseUrl()}/lahan/tambah/save`, {
       method: "POST",
       body: formData,
     });
@@ -41,7 +41,7 @@ export async function tambahLahan(data: TambahLahanRequest) {
 }
 
 export async function tampilLahan() {
-  const result = await fetch(`${BASE_URL}/lahan/tambah/get`);
+  const result = await fetch(`${getBaseUrl()}/lahan/tambah/get`);
 
   if (!result.ok) {
     throw new Error("Gagal tampil");
@@ -51,7 +51,7 @@ export async function tampilLahan() {
 }
 
 export async function hapusLahan(id: number | string) {
-  const response = await fetch(`${BASE_URL}/lahan/${id}`, {
+  const response = await fetch(`${getBaseUrl()}/lahan/${id}`, {
     method: "DELETE",
   });
 
