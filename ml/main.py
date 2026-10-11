@@ -234,15 +234,20 @@ async def tambah_lahan(
     lokasi: str = Form(...),
     tanaman: str = Form(...),
     sensor: str = Form(...),
-    gambar: UploadFile = File(...)
+    gambar: Optional[UploadFile] = File(None)
 ):
-    isi_file = await gambar.read()
+    image_url = None
+    if gambar is not None and getattr(gambar, "filename", None):
+        isi_file = await gambar.read()
+        if isi_file:
+            image_url = upload_gambar(
+                file_bytes=isi_file,
+                filename=gambar.filename,
+                content_type=gambar.content_type
+            )
 
-    image_url = upload_gambar(
-        file_bytes=isi_file,
-        filename=gambar.filename,
-        content_type=gambar.content_type
-    )
+    if not image_url:
+        image_url = "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&auto=format&fit=crop"
 
     payload = {
         "nama": nama,

@@ -357,6 +357,16 @@ def insert_recommendation(data: dict):
     return response.data[0]
 
 def post_lahan(data):
+    if "id" not in data or data["id"] is None:
+        try:
+            existing = supabase.table("lahan").select("id").order("id", desc=True).limit(1).execute()
+            max_id = 0
+            if existing.data and existing.data[0].get("id") is not None:
+                max_id = int(existing.data[0]["id"])
+            data["id"] = max_id + 1
+        except Exception as e:
+            print("Auto ID error:", e)
+
     result = (
         supabase
         .table("lahan")

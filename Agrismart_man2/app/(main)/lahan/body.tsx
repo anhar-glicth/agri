@@ -98,24 +98,25 @@ export function CardLahan() {
 
   return (
     <>
-      {getLahan.map((lahan: any) => {
-        const isActive = lahanAktif?.id === Number(lahan.id);
+      {getLahan.map((lahan: any, index: number) => {
+        const isActive = Number(lahanAktif?.id) === Number(lahan.id);
 
         return (
           <div
-            key={lahan.id}
+            key={lahan.id ?? `lahan-${index}`}
             className={`
               grid
               grid-cols-1
               gap-4
               rounded-[10px]
-              m-5
+              m-4
+              sm:m-5
               p-4
               shadow-lg
               transition-all
               lg:grid-cols-[repeat(3,minmax(0,1fr))]
               dark:bg-slate-900
-              ${isActive ? "ring-2 ring-emerald-600" : ""}
+              ${isActive ? "ring-2 ring-emerald-600 bg-emerald-50/20" : "bg-white"}
             `}
           >
             {/* =====================================================
@@ -131,13 +132,19 @@ export function CardLahan() {
               "
             >
               <img
-                src={lahan?.gambar}
-                alt={lahan?.nama}
+                src={
+                  lahan?.gambar ||
+                  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&auto=format&fit=crop"
+                }
+                alt={lahan?.nama || "Lahan"}
                 className="
                   aspect-video
                   w-full
                   rounded-[10px]
                   object-cover
+                  border
+                  border-slate-200
+                  dark:border-slate-800
                 "
               />
             </div>
@@ -146,7 +153,7 @@ export function CardLahan() {
                 INFORMASI
             ===================================================== */}
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 justify-center">
               <h1
                 className="
                   flex
@@ -158,8 +165,7 @@ export function CardLahan() {
                   dark:text-white
                 "
               >
-                <MountainSnow className="text-green-700" />
-
+                <MountainSnow className="text-emerald-600 h-6 w-6 shrink-0" />
                 {lahan?.nama}
               </h1>
 
@@ -172,8 +178,8 @@ export function CardLahan() {
                   dark:text-slate-300
                 "
               >
-                <VectorSquare className="text-green-700" />
-                Luas: {lahan?.luas}
+                <VectorSquare className="text-emerald-600 h-5 w-5 shrink-0" />
+                Luas: {lahan?.luas} Hektar
               </h2>
 
               <h2
@@ -185,7 +191,7 @@ export function CardLahan() {
                   dark:text-slate-300
                 "
               >
-                <Sprout className="text-green-700" />
+                <Sprout className="text-emerald-600 h-5 w-5 shrink-0" />
                 Tanaman: {lahan?.tanaman}
               </h2>
 
@@ -198,8 +204,8 @@ export function CardLahan() {
                   dark:text-slate-300
                 "
               >
-                <RadioTower className="text-green-700" />
-                Sensor: {lahan?.sensor}
+                <RadioTower className="text-emerald-600 h-5 w-5 shrink-0" />
+                Sensor: <span className="font-semibold text-emerald-700 dark:text-emerald-400">{lahan?.sensor}</span>
               </h2>
 
               {/* STATUS LAHAN AKTIF */}
@@ -207,7 +213,7 @@ export function CardLahan() {
               {isActive && (
                 <div
                   className="
-                    mt-2
+                    mt-1
                     inline-flex
                     w-fit
                     items-center
@@ -236,19 +242,24 @@ export function CardLahan() {
             <div
               className="
                 flex
-                flex-col
+                flex-wrap
+                sm:flex-row
+                lg:flex-col
                 items-center
                 justify-center
-                gap-4
+                gap-3
+                pt-2
+                lg:pt-0
               "
             >
               {/* EDIT */}
 
-              <Link href={`/lahan/edit/${lahan.id}`}>
+              <Link href={`/lahan/edit?id=${lahan.id}`}>
                 <Button
                   type="button"
                   className="
-                    w-32
+                    w-28
+                    sm:w-32
                     cursor-pointer
                     border-2
                     border-green-700
@@ -257,7 +268,7 @@ export function CardLahan() {
                     hover:bg-gray-100
                   "
                 >
-                  <Pencil />
+                  <Pencil className="h-4 w-4 mr-1" />
                   Edit
                 </Button>
               </Link>
@@ -268,7 +279,8 @@ export function CardLahan() {
                 type="button"
                 onClick={() => handleAktifkan(lahan)}
                 className={`
-                  w-32
+                  w-28
+                  sm:w-32
                   cursor-pointer
                   border-2
 
@@ -289,7 +301,7 @@ export function CardLahan() {
                   }
                 `}
               >
-                {isActive ? <CheckCircle2 /> : <Eye />}
+                {isActive ? <CheckCircle2 className="h-4 w-4 mr-1" /> : <Eye className="h-4 w-4 mr-1" />}
 
                 {isActive ? "Aktif" : "Aktifkan"}
               </Button>
@@ -300,7 +312,8 @@ export function CardLahan() {
                 type="button"
                 onClick={() => handleHapus(lahan)}
                 className="
-                  w-32
+                  w-28
+                  sm:w-32
                   cursor-pointer
                   border-2
                   border-red-600
@@ -309,7 +322,7 @@ export function CardLahan() {
                   hover:bg-red-50
                 "
               >
-                <Trash />
+                <Trash className="h-4 w-4 mr-1" />
                 Hapus
               </Button>
             </div>

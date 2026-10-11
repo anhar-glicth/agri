@@ -28,9 +28,15 @@ export async function tambahLahan(data: TambahLahanRequest) {
       body: formData,
     });
 
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(errText || "Gagal menyimpan data lahan");
+    }
+
     return await response.json();
   } catch (error) {
-    console.log(error);
+    console.error("Gagal menambah lahan:", error);
+    throw error;
   }
 }
 
